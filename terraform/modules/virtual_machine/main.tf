@@ -93,7 +93,7 @@ resource "azurerm_linux_virtual_machine" "virtual_machine" {
 
   admin_ssh_key {
     username   = var.vm_user
-    public_key = var.admin_ssh_public_key
+    public_key = file(var.admin_ssh_public_key)
   }
 
   source_image_reference {
@@ -133,12 +133,12 @@ resource "azurerm_virtual_machine_extension" "custom_script" {
     }
   SETTINGS
 
-  protected_settings = <<PROTECTED_SETTINGS
-    {
-      "storageAccountName": "${var.script_storage_account_name}",
-      "storageAccountKey": "${var.script_storage_account_key}"
-    }
-  PROTECTED_SETTINGS
+  #protected_settings = <<PROTECTED_SETTINGS
+  #  {
+  #    "storageAccountName": "${var.script_storage_account_name}",
+  #    "storageAccountKey": "${var.script_storage_account_key}"
+  #  }
+  #PROTECTED_SETTINGS
 
   lifecycle {
     ignore_changes = [
