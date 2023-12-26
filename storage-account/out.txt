@@ -1,0 +1,3 @@
+terraform_state_resource_group_name = "lmt-tfstate-rg"
+terraform_state_storage_account = "lmttft98xexmh"
+terraform_state_storage_container_core = "lmt-core-tfstate"
