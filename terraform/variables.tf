@@ -7,7 +7,7 @@ variable "log_analytics_workspace_name" {
 variable "log_analytics_retention_days" {
   description = "Specifies the number of days of the retention policy"
   type        = number
-  default     = 30
+  default     = 1
 }
 
 variable "solution_plan_map" {
@@ -23,13 +23,13 @@ variable "solution_plan_map" {
 
 variable "location" {
   description = "Specifies the location for the resource group and all the resources"
-  default     = "northeurope"
+  default     = "West Europe"
   type        = string
 }
 
 variable "resource_group_name" {
   description = "Specifies the resource group name"
-  default     = "BaboRG"
+  default     = "LmtRG"
   type        = string
 }
 
@@ -83,7 +83,7 @@ variable "vm_subnet_address_prefix" {
 
 variable "aks_cluster_name" {
   description = "(Required) Specifies the name of the AKS cluster."
-  default     = "BaboAks"
+  default     = "LmtAks"
   type        = string
 }
 
@@ -129,7 +129,7 @@ variable "sku_tier" {
 
 variable "kubernetes_version" {
   description = "Specifies the AKS Kubernetes version"
-  default     = "1.21.1"
+  default     = "1.27"
   type        = string
 }
 
@@ -363,13 +363,13 @@ variable "additional_node_pool_node_count" {
 
 variable "domain_name_label" {
   description = "Specifies the domain name for the jumbox virtual machine"
-  default     = "babotestvm"
+  default     = "Lmttestvm"
   type        = string
 }
 
 variable "firewall_name" {
   description = "Specifies the name of the Azure Firewall"
-  default     = "BaboFirewall"
+  default     = "LmtFirewall"
   type        = string
 }
 
@@ -477,7 +477,7 @@ variable "storage_account_tier" {
 variable "acr_name" {
   description = "Specifies the name of the container registry"
   type        = string
-  default     = "BaboAcr"
+  default     = "LmtAcr"
 }
 
 variable "acr_sku" {
@@ -512,7 +512,7 @@ variable "tags" {
 
 variable "bastion_host_name" {
   description = "(Optional) Specifies the name of the bastion host"
-  default     = "BaboBastionHost"
+  default     = "LmtBastionHost"
   type        = string
 }
 
@@ -530,7 +530,7 @@ variable "storage_account_replication_type" {
 variable "key_vault_name" {
   description = "Specifies the name of the key vault."
   type        = string
-  default     = "BaboAksKeyVault"
+  default     = "LmtAksKeyVault"
 }
 
 variable "key_vault_sku_name" {
