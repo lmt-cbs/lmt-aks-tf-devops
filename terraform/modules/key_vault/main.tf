@@ -45,9 +45,9 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
   target_resource_id         = azurerm_key_vault.key_vault.id
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  log {
+  enabled_log {
     category = "AuditEvent"
-    enabled  = true
+    
 
     retention_policy {
       enabled = true
@@ -55,10 +55,9 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AzurePolicyEvaluationDetails"
-    enabled  = true
-
+    
     retention_policy {
       enabled = true
       days    = var.log_analytics_retention_days
