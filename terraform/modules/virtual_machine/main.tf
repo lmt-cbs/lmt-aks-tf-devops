@@ -132,12 +132,12 @@ resource "azurerm_virtual_machine_extension" "custom_script" {
     }
   SETTINGS
 
-  #protected_settings = <<PROTECTED_SETTINGS
-  #  {
-  #    "storageAccountName": "${var.script_storage_account_name}",
-  #    "storageAccountKey": "${var.script_storage_account_key}"
-  #  }
-  #PROTECTED_SETTINGS
+  protected_settings = <<PROTECTED_SETTINGS
+    {
+      "storageAccountName": "${var.script_storage_account_name}",
+      "storageAccountKey": "${var.script_storage_account_key}"
+    }
+  PROTECTED_SETTINGS
 
   lifecycle {
     ignore_changes = [
@@ -209,20 +209,18 @@ resource "azurerm_monitor_diagnostic_setting" "nsg_settings" {
   target_resource_id         = azurerm_network_security_group.nsg.id
   log_analytics_workspace_id = var.log_analytics_workspace_resource_id
 
-  log {
+  enabled_log {
     category = "NetworkSecurityGroupEvent"
-    enabled  = true
-
+    
     retention_policy {
       enabled = true
       days    = var.log_analytics_retention_days
     }
   }
 
- log {
+ enabled_log {
     category = "NetworkSecurityGroupRuleCounter"
-    enabled  = true
-
+    
     retention_policy {
       enabled = true
       days    = var.log_analytics_retention_days
