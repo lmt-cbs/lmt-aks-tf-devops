@@ -25,11 +25,6 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
     content {
       category = each.key
       enabled  = true
-
-      retention_policy {
-        enabled = var.retention_policy_enabled
-        days    = var.retention_policy_days
-      }
     }
   }
 
@@ -38,11 +33,6 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
     content {
       category = each.key
       enabled  = true
-
-      retention_policy {
-        enabled = var.retention_policy_enabled
-        days    = var.retention_policy_days
-      }
     }
   }
 }

@@ -102,11 +102,13 @@ variable "admin_ssh_public_key" {
 variable "script_storage_account_name" {
   description = "(Required) Specifies the name of the storage account that contains the custom script."
   type        = string
+  default     = "lmttestsaname"
 }
 
 variable "script_storage_account_key" {
   description = "(Required) Specifies the name of the storage account that contains the custom script."
   type        = string
+  default     = "lmttestsakey"
 }
 
 variable "container_name" {

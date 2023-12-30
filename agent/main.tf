@@ -29,7 +29,7 @@ resource "random_string" "storage_account_suffix" {
   special = false
   lower   = true
   upper   = false
-  number  = false
+  numeric  = false
 }
 
 module "storage_account" {

@@ -68,7 +68,7 @@ variable "purge_protection_enabled" {
 variable "soft_delete_retention_days" {
   description = "(Optional) The number of days that items should be retained for once soft-deleted. This value can be between 7 and 90 (the default) days."
   type        = number
-  default     = 30
+  default     = 7
 }
 
 variable "bypass" { 
@@ -111,5 +111,5 @@ variable "log_analytics_workspace_id" {
 variable "log_analytics_retention_days" {
   description = "Specifies the number of days of the retention policy"
   type        = number
-  default     = 7
+  default     = 0
 }

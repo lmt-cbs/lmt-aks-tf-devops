@@ -44,8 +44,7 @@ resource "azurerm_firewall" "firewall" {
 
   lifecycle {
     ignore_changes = [
-      tags,
-      
+      tags      
     ]
   }
 }
@@ -242,38 +241,18 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
 
   enabled_log {
     category = "AzureFirewallApplicationRule"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   enabled_log {
     category = "AzureFirewallNetworkRule"
-   
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   enabled_log {
     category = "AzureFirewallDnsProxy"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 }
 
@@ -284,37 +263,17 @@ resource "azurerm_monitor_diagnostic_setting" "pip_settings" {
 
   enabled_log {
     category = "DDoSProtectionNotifications"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   enabled_log {
     category = "DDoSMitigationFlowLogs"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   enabled_log {
     category = "DDoSMitigationReports"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 }
