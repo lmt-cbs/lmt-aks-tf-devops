@@ -51,13 +51,13 @@ module "hub_network" {
 
   subnets = [
     {
-      name : "azfwsn"
+      name : "AzureFirewallSubnet"
       address_prefixes : var.hub_firewall_subnet_address_prefix
       enforce_private_link_endpoint_network_policies : true
       enforce_private_link_service_network_policies : false
     },
     {
-      name : "azbastionsn"
+      name : "AzureBastionSubnet"
       address_prefixes : var.hub_bastion_subnet_address_prefix
       enforce_private_link_endpoint_network_policies : true
       enforce_private_link_service_network_policies : false
@@ -124,7 +124,7 @@ module "firewall" {
   sku_name                     = var.firewall_sku_name
   sku_tier                     = var.firewall_sku_tier
   pip_name                     = "${var.firewall_name}PublicIp"
-  subnet_id                    = module.hub_network.subnet_ids["azfwsn"]
+  subnet_id                    = module.hub_network.subnet_ids["AzureFirewallSubnet"]
   log_analytics_workspace_id   = module.log_analytics_workspace.id
   log_analytics_retention_days = var.log_analytics_retention_days
 }
@@ -249,7 +249,7 @@ module "bastion_host" {
   name                         = var.bastion_host_name
   location                     = var.location
   resource_group_name          = azurerm_resource_group.rg.name
-  subnet_id                    = module.hub_network.subnet_ids["azbastionsn"]
+  subnet_id                    = module.hub_network.subnet_ids["AzureBastionSubnet"]
   log_analytics_workspace_id   = module.log_analytics_workspace.id
   log_analytics_retention_days = var.log_analytics_retention_days
 }
