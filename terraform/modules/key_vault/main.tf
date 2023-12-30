@@ -8,8 +8,21 @@ terraform {
   required_version = ">= 0.14.9"
 }
 
+# Generate randon name for key-vault since purge is not done  
+resource "random_string" "key_vault_suffix" {
+  length  = 8
+  special = false
+  lower   = true
+  upper   = false
+  numeric  = false
+}
+
+locals {
+  key_vault_suffix = random_string.key_vault_suffix.result
+}
+
 resource "azurerm_key_vault" "key_vault" {
-  name                            = var.name
+  name                            = "${var.name}${local.key_vault_suffix}"
   location                        = var.location
   resource_group_name             = var.resource_group_name
   tenant_id                       = var.tenant_id
@@ -47,29 +60,13 @@ resource "azurerm_monitor_diagnostic_setting" "settings" {
 
   enabled_log {
     category = "AuditEvent"
-    
-
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   enabled_log {
     category = "AzurePolicyEvaluationDetails"
-    
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = var.log_analytics_retention_days
-    }
   }
 }

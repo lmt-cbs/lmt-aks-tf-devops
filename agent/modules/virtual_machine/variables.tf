@@ -86,7 +86,7 @@ variable "log_analytics_workspace_resource_id" {
 variable "log_analytics_retention_days" {
   description = "Specifies the number of days of the retention policy"
   type        = number
-  default     = 7
+  default     = 0
 }
 
 variable "admin_ssh_public_key" {
